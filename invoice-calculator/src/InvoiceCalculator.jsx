@@ -1,45 +1,64 @@
-import React, {useState} from 'react';
+// src/Calculator.js
+import React, { useState } from 'react';
+import {evaluate} from 'math.js';
 
-function InvoiceCalculator() {
-    const InvoiceCalculator = ()=>{
-        const [quantity, setQuantity] =useState(0);
-        const [costPrice, setCostPrice] =useState(0);
-        const [margin, setMargin] = useState(0);
-        const [discount, setDiscount] =useState(0);
-        const [tax, setTax] =useState(0);
+const InvoiceCalculator = () => {
+  const [input, setInput] = useState('');
+  const [result, setResult] = useState('');
 
-        const handleQuantityChange = (e) =>{
-            setQuantity(e.target.value);
-        }
-        const handleCostPriceChange = (e) =>{
-            setCostPrice(e.target.value);
-        }
-        const handleMarginChange = (e) =>{
-            setMargin(e.target.value);
-        }
-        const handleDiscountChange = (e) =>{
-            setDiscount(e.target.value);
-        }
-        const calculateTax = () =>{
-            const taxWithoutDiscount = quantity * costPrice;
-            const taxWithDiscount = taxWithoutDiscount - (taxWithoutDiscount * (discount/100));
-            setTax(taxWithDiscount)
-        }
+  const handleButtonClick = (value) => {
+    if (value === '=') {
+      try {
+        setResult(evaluate(input).toString());
+      } catch (error) {
+        setResult('Error');
+      }
+    } else if (value === 'C') {
+      setInput('');
+      setResult('');
+    } else {
+      setInput((prevInput) => prevInput + value);
     }
+  };
 
   return (
-    <div className='calculator-box'>
-      <label>Quantity</label>
-      <input type="number" value={quantity} onChange={handleQuantityChange}/>
-      <label>Cost Price</label>
-      <input type="number" value={costPrice} onChange={handleCostPriceChange}/>
-      <label>Margin %</label>
-      <input type="number" value={Margin} onChange={handleMarginChange} />
-      <label>Discount %</label>
-      <input type="number" value={Margin} onChange={handleChange} />
-
+    <div>
+      <div>
+        <input type="text" value={input} readOnly />
+      </div>
+      <div>
+        <button onClick={() => handleButtonClick('7')}>7</button>
+        <button onClick={() => handleButtonClick('8')}>8</button>
+        <button onClick={() => handleButtonClick('9')}>9</button>
+        <button onClick={() => handleButtonClick('/')}>/</button>
+      </div>
+      <div>
+        <button onClick={() => handleButtonClick('4')}>4</button>
+        <button onClick={() => handleButtonClick('5')}>5</button>
+        <button onClick={() => handleButtonClick('6')}>6</button>
+        <button onClick={() => handleButtonClick('*')}>*</button>
+      </div>
+      <div>
+        <button onClick={() => handleButtonClick('1')}>1</button>
+        <button onClick={() => handleButtonClick('2')}>2</button>
+        <button onClick={() => handleButtonClick('3')}>3</button>
+        <button onClick={() => handleButtonClick('-')}>-</button>
+      </div>
+      <div>
+        <button onClick={() => handleButtonClick('0')}>0</button>
+        <button onClick={() => handleButtonClick('.')}>.</button>
+        <button onClick={() => handleButtonClick('=')}>=</button>
+        <button onClick={() => handleButtonClick('+')}>+</button>
+      </div>
+      <div>
+        <button onClick={() => handleButtonClick('C')}>C</button>
+      </div>
+      <div>
+        <p>Result: {result}</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default InvoiceCalculator
+export default InvoiceCalculator;
+

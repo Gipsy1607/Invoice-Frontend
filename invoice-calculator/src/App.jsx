@@ -1,13 +1,13 @@
 import './App.css';
-import {Routes, Route } from 'react-dom';
 import InvoiceCalculator from './InvoiceCalculator';
 
 function App() {
   return (
     <div className="App">
       <div>
-        <h1>Hello To the Invoice Calculating website!!!</h1>
-       <button onClick={InvoiceCalculator}>Invoice Calculator</button>
+        <h1>Invoice Calculator</h1>
+        <p>This app calculates the total cost of an invoice based on a list of items and their prices.</p>
+        <InvoiceCalculator/>
       </div>
     </div>
   );
