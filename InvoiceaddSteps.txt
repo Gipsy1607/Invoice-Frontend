@@ -1,0 +1,11 @@
+1. item price x item amount = item subtotal
+2. (item subtotal - item discount ) + item tax = item total
+3. (item total - invoice discount ) + invoice tax = invoice total
+Or
+1. item price x item amount = item subtotal
+2. (item subtotal + item tax ) - item discount = item total
+3. (item total + invoice tax ) - invoice discount = invoice total
+
+Item subtotal (price x amount)
+invoice discount
+invoice tax rates

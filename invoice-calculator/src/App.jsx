@@ -1,5 +1,5 @@
 import './App.css';
-import InvoiceCalculator from './InvoiceCalculator';
+import InvoiceCalculator from './InvoiceCalculator.jsx';
 
 function App() {
   return (

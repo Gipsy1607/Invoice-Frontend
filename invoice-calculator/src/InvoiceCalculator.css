@@ -1,0 +1,13 @@
+.calculator{
+    border: 2px solid black;
+    padding: 10px;
+    height: 150px;
+    width: 50px;
+}
+
+.display{
+    table-layout: auto;
+    border-style: double;
+    border-color: black;
+    font-size: 13px;
+}
